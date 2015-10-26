@@ -4,11 +4,19 @@ Run before you do development
 
 [![Build Status](https://travis-ci.org/udzura/beforedo.svg)](https://travis-ci.org/udzura/beforedo)
 
+## Install
+
+```bash
+$ go get github.com/udzura/beforedo
+```
+
+Or [download here and put in under `$PATH`](https://github.com/udzura/beforedo/releases/latest)
+
 ## How to use
 
 Set up `Before.yaml`:
 
-```
+```yaml
 - task: mysql.server start
   port: 3306
 - task: memcached -p 11211 -m 64m -d
