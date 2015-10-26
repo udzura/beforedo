@@ -2,6 +2,7 @@
 
 Run before you do development
 
+[![Build Status](https://travis-ci.org/udzura/beforedo.svg)](https://travis-ci.org/udzura/beforedo)
 
 ## How to use
 
