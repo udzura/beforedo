@@ -1,17 +1,16 @@
-VERSION := $(shell go run beforedo.go -version | sed 's/Version: //')
-CMDDIR  := .
+VERSION := $(shell cat ./VERSION)
 .PHONY: install test setup clean-zip all compress release
 
 beforedo: test
-	go build .
+	go build -ldflags "-X main.Version=$(VERSION)"
 
 test:
 	go test ./...
 
 setup:
 	go get ./...
-        which gox || go get github.com/mitchellh/gox
-        which ghr || go get github.com/tcnksm/ghr
+	which gox || go get github.com/mitchellh/gox
+	which ghr || go get github.com/tcnksm/ghr
 
 install: beforedo
 	install beforedo /usr/local/bin
