@@ -1,0 +1,4 @@
+- task: for i in 1 2 3 4 5; do sleep 1; echo $i; done
+  port: 12345
+- task: for i in 6 7 8 9 10; do sleep 1; echo $i 1>&2; done
+  port: 12345
