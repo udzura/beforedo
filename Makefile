@@ -20,7 +20,7 @@ clean-zip:
 
 all: setup test
 	gox \
-	    -os="linux,darwin" \
+	    -os="linux darwin" \
 	    -arch="amd64" \
 	    -output "pkg/{{.Dir}}_$(VERSION)-{{.OS}}-{{.Arch}}" \
 	    $(CMDDIR)

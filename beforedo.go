@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-var Version = "0.0.0.pre"
+var Version = "0.0.1"
 var confPath string
 var showVersion bool
 
@@ -16,7 +16,7 @@ func realMain() error {
 	flag.Parse()
 
 	if showVersion {
-		fmt.Printf("Version: %s", Version)
+		fmt.Printf("Version: %s\n", Version)
 		os.Exit(0)
 	}
 
