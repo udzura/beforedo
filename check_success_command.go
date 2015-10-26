@@ -31,5 +31,5 @@ func checkSuccessCommand(t *Task) (bool, error) {
 	outStr := strings.TrimSpace(string(out))
 	fmt.Printf("The check command %s exited: %d, output: `%s'\n", t.SuccessCommand, exitCode, outStr)
 
-	return exitCode == 0, nil
+	return exitCode != 0, nil
 }
