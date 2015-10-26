@@ -40,6 +40,8 @@ func (t *Task) toRun() (bool, error) {
 	switch {
 	case t.Port != 0:
 		return checkPort(t)
+	case t.File != "":
+		return checkFile(t)
 	default:
 		return false, fmt.Errorf("Invalid or unsupported config: %v", t)
 	}
