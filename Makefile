@@ -4,7 +4,7 @@ VERSION := $(shell cat ./VERSION)
 beforedo: test
 	go build -ldflags "-X main.Version=$(VERSION)"
 
-test:
+test: setup
 	go test ./...
 
 setup:
