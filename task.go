@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"syscall"
 
 	"gopkg.in/yaml.v2"
 )
@@ -42,6 +43,8 @@ func (t *Task) toRun() (bool, error) {
 		return checkPort(t)
 	case t.File != "":
 		return checkFile(t)
+	case t.SuccessCommand != "":
+		return checkSuccessCommand(t)
 	case t.Always:
 		return true, nil
 	default:
@@ -81,9 +84,22 @@ func (t *Task) run() error {
 	}
 
 	err = cmd.Wait()
-	if err != nil {
-		return err
+	var exitCode int
+	if err == nil {
+		exitCode = 0
+	} else {
+		if exit, ok := err.(*exec.ExitError); ok {
+			if s, ok := exit.Sys().(syscall.WaitStatus); ok {
+				exitCode = s.ExitStatus()
+			}
+		}
+		if exitCode != 0 {
+			return fmt.Errorf("Command exited with code %d.\nOriginal Error: %s", exitCode, err.Error())
+		} else {
+			return err
+		}
 	}
+
 	fmt.Printf("OK: %s\n", t.Command)
 
 	return nil
