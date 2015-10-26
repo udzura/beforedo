@@ -27,3 +27,37 @@ Then:
 ```bash
 $ beforedo
 ```
+
+## Task details
+
+### `port`
+
+* Skip task when specified port is already listened
+
+### `file`
+
+* Skip task when the destination file exists(if the destination is directory, all tasks fails)
+
+### `success`
+
+* Skip task when the specified command successfully exits
+
+### `always`
+
+* Always run the task
+
+### `front`
+
+* Always run the task, which is blocking to terminal. e.g. `rails s`, `npm start` &c.
+  * You can run multipul tasks in front by `Procfile`
+
+## License
+
+[MIT](./LICENSE).
+
+
+## Contributing
+
+Pull Request welcome!
+
+`-c` option is now available to specify config file(which is generally useful to debug).
