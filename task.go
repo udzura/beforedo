@@ -42,6 +42,8 @@ func (t *Task) toRun() (bool, error) {
 		return checkPort(t)
 	case t.File != "":
 		return checkFile(t)
+	case t.Always:
+		return true, nil
 	default:
 		return false, fmt.Errorf("Invalid or unsupported config: %v", t)
 	}
