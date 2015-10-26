@@ -25,5 +25,5 @@ Set up `Before.yaml`:
 Then:
 
 ```bash
-$ before do
+$ beforedo
 ```
